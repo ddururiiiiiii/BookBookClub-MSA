@@ -93,5 +93,6 @@
 - [#034 팔로우(Follow) 도메인 구현 및 테스트](https://ddururiiiiiii.tistory.com/659)
 
 ### MAS 전환기
-- [모놀리식 아키텍처를 MSA 아키텍처로 전환하기 (1) - bbc-user-service (Swagger(Web API 문서) 적용까지)
+- [#035 모놀리식 아키텍처를 MSA 아키텍처로 전환하기 (1) - bbc-user-service (User, EmailValidation 엔티티)
 ](https://ddururiiiiiii.tistory.com/662)
+- [#036 모놀리식 아키텍처를 MSA 아키텍처로 전환하기 (2) - bbc-user-service ((Follow 엔티티)](https://ddururiiiiiii.tistory.com/665)
