@@ -37,7 +37,7 @@
 ## 🔗 서비스별 깃허브 링크
 
 - **User Service**: [🔗 링크](https://github.com/ddururiiiiiii/bbc-user-service)
-- **Post Service**: [🔗 링크] (예정)
+- **Post Service**: [🔗 링크](https://github.com/ddururiiiiiii/bbc-post-service)
 - **Gateway Service**: [🔗 링크] (예정)
 
 ----
@@ -96,3 +96,4 @@
 - [#035 모놀리식 아키텍처를 MSA 아키텍처로 전환하기 (1) - bbc-user-service (User, EmailValidation 엔티티)
 ](https://ddururiiiiiii.tistory.com/662)
 - [#036 모놀리식 아키텍처를 MSA 아키텍처로 전환하기 (2) - bbc-user-service ((Follow 엔티티)](https://ddururiiiiiii.tistory.com/665)
+- [#037 모놀리식 아키텍처를 MSA 아키텍처로 전환하기 (3) - MSA 환경에서의 서비스 간 통신 구축](https://ddururiiiiiii.tistory.com/673)
