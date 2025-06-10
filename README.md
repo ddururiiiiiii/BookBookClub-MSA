@@ -157,3 +157,4 @@
 ](https://ddururiiiiiii.tistory.com/662)
 - [#036 모놀리식 아키텍처를 MSA 아키텍처로 전환하기 (2) - bbc-user-service ((Follow 엔티티)](https://ddururiiiiiii.tistory.com/665)
 - [#037 모놀리식 아키텍처를 MSA 아키텍처로 전환하기 (3) - MSA 환경에서의 서비스 간 통신 구축](https://ddururiiiiiii.tistory.com/673)
+- [#038 공통모듈 구조 만들기, 예외 처리 분리하기](https://ddururiiiiiii.tistory.com/674)
