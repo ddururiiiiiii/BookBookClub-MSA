@@ -92,8 +92,11 @@
 ## 📌 프로젝트 링크
 
 - **🧱 모놀리식 버전**: [BookBookClub (Monolith)](https://github.com/ddururiiiiiii/bookbookclub)
-- **📁 MSA 버전**: 현재 문서
-- **📄 도메인별 리드미**: 각 모듈(bbc-user-service 등)의 `README.md` 참조
+- **📁 MSA 버전**: [BookBookClub-MSA](https://github.com/ddururiiiiiii/BookBookClub-MSA)
+- **📄 도메인별 **:
+-   [bbc-user-service](https://github.com/ddururiiiiiii/bbc-user-service)
+-   [bbc-post-service](https://github.com/ddururiiiiiii/bbc-post-service)
+
 
 <br>
 
