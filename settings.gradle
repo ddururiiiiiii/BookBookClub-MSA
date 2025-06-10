@@ -1,0 +1,5 @@
+rootProject.name = 'Bookbookclub-MSA'
+
+include 'bbc-common'
+include 'bbc-user-service'
+include 'bbc-post-service'

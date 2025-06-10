@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.bookbookclub'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = '17'
+}
+
+dependencies {
+    implementation 'org.projectlombok:lombok:1.18.28'
+    annotationProcessor 'org.projectlombok:lombok:1.18.28'
+}
