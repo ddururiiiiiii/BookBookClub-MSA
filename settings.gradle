@@ -1,4 +1,4 @@
-rootProject.name = 'Bookbookclub-MSA'
+rootProject.name = 'BookBookClub-MSA'
 
 include 'bbc-common'
 include 'bbc-user-service'
