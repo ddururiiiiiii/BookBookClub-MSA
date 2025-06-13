@@ -63,6 +63,9 @@
 - [x] 이메일 인증 + Redis 저장 + DB 기록
 - [x] 사용자 정보 조회 (마이페이지)
 - [x] 프로필 이미지 업로드 (로컬 저장, S3 예정)
+- [x] 회원 탈퇴 (refreshToken 삭제, accessToken 블랙리스트 등록 포함)
+- [x] 로그아웃 기능 (refresh 제거 + accessToken 블랙리스트 등록)
+- [x] 탈퇴 후 재가입 제한 정책 적용
 
 ### 게시글 서비스 (`bbc-post-service`)
 - [x] 피드 CRUD
@@ -122,6 +125,7 @@
 - [#013 회원 프로필 사진 등록 기능 구현](https://ddururiiiiiii.tistory.com/620)
 - [#014 글로벌 예외처리 및 API 응답 포맷 통일](https://ddururiiiiiii.tistory.com/621)
 - [#015 이메일 인증 실패 시도 횟수 제한 기능](https://ddururiiiiiii.tistory.com/623)
+- [#040 리팩토링 - (2) User 도메인 (단위 테스트, Postman 테스트 포함)](https://ddururiiiiiii.tistory.com/676)
 
 ### 책(Book)
 - [#016 북(Book) 도메인 개발 및 단위 테스트](https://ddururiiiiiii.tistory.com/637)
@@ -158,3 +162,4 @@
 - [#036 모놀리식 아키텍처를 MSA 아키텍처로 전환하기 (2) - bbc-user-service ((Follow 엔티티)](https://ddururiiiiiii.tistory.com/665)
 - [#037 모놀리식 아키텍처를 MSA 아키텍처로 전환하기 (3) - MSA 환경에서의 서비스 간 통신 구축](https://ddururiiiiiii.tistory.com/673)
 - [#038 공통모듈 구조 만들기, 예외 처리 분리하기](https://ddururiiiiiii.tistory.com/674)
+- [#039 리팩토링 - (1) 공통 응답 구조, 공통 예외 처리](https://ddururiiiiiii.tistory.com/675)
