@@ -6,32 +6,55 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * 공통 API 응답 포맷
- * - 성공/실패 여부
- * - 응답 데이터
- * - 메시지 및 에러코드 포함 가능
+ * API 응답 포맷을 표준화하는 클래스
+ *
  */
 @Getter
-@AllArgsConstructor
 public class ApiResponse<T> {
-    private boolean success;
-    private T data;
-    private String message;
-    private String errorCode;
+    private final boolean success;
+    private final String code;
+    private final String message;
+    private final T data;
 
+    private ApiResponse(boolean success, String code, String message, T data) {
+        this.success = success;
+        this.code = code;
+        this.message = message;
+        this.data = data;
+    }
+
+    /**
+     * 성공 응답 생성
+     */
     public static <T> ApiResponse<T> success(T data) {
-        return new ApiResponse<>(true, data, null, null);
+        return new ApiResponse<>(true, null, null, data);
     }
 
-    public static <T> ApiResponse<T> success(T data, String message) {
-        return new ApiResponse<>(true, data, message, null);
+    /**
+     * 성공 응답 생성 (메시지 포함)
+     */
+    public static <T> ApiResponse<T> success(String message, T data) {
+        return new ApiResponse<>(true, "200", message, data);
     }
 
+    /**
+     * 성공 응답 생성 (메시지만 포함, data 없이)
+     */
+    public static <T> ApiResponse<T> success(String message) {
+        return new ApiResponse<>(true, "200", message, null);
+    }
+
+    /**
+     * 에러 응답 생성 (비즈니스/공통 예외)
+     */
+    public static <T> ApiResponse<T> error(BaseErrorCode errorCode) {
+        return new ApiResponse<>(false, errorCode.getCode(), errorCode.getMessage(), null);
+    }
+
+    /**
+     * 실패 응답 생성 (에러 코드와 동일)
+     */
     public static <T> ApiResponse<T> fail(BaseErrorCode errorCode) {
-        return new ApiResponse<>(false, null, errorCode.getMessage(), errorCode.getCode());
-    }
-
-    public static <T> ApiResponse<T> fail(String message) {
-        return new ApiResponse<>(false, null, message, null);
+        return error(errorCode); // alias
     }
 }
