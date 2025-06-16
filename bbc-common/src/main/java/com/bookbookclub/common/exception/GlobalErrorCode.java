@@ -1,6 +1,8 @@
 package com.bookbookclub.common.exception;
 
 
+import lombok.Getter;
+
 /**
  * 시스템 전역에서 사용되는 공통 에러 코드 정의
  *
@@ -8,6 +10,7 @@ package com.bookbookclub.common.exception;
  * - 도메인에 속하지 않는 일반적인 예외 상황(400, 403, 404, 500 등)에 사용한다.
  * - BusinessException과 GlobalExceptionHandler에서 참조된다.
  */
+@Getter
 public enum GlobalErrorCode implements BaseErrorCode {
 
     INVALID_INPUT_VALUE(400, "G001", "잘못된 입력값입니다."),
@@ -29,19 +32,5 @@ public enum GlobalErrorCode implements BaseErrorCode {
     }
 
 
-    @Override
-    public int getStatusCode() {
-        return statusCode;
-    }
-
-    @Override
-    public String getCode() {
-        return code;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
-    }
 }
 
