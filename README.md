@@ -75,6 +75,15 @@
 - [x] 블라인드 처리된 피드 제외 로직
 - [x] MSA 환경에서 사용자 정보 연동 (Feign 사용)
 
+### 📢 알림 서비스 (`bbc-notification-service`)
+- [x] Kafka 기반 이벤트 처리 구조 도입
+- [x] 피드 생성 시 알림 발행 및 저장
+- [x] 팔로우 발생 시 알림 저장
+- [x] 알림 조회 API (읽음 처리, 개별 알림 확인 포함)
+- [x] 읽지 않은 알림 개수 조회
+- [x] Notification 도메인 분리 설계 (isRead, deletedAt 기반 논리 삭제 구조)
+- [x] JWT 기반 사용자 인증 (각 서비스별 JwtUtil 분리 사용)
+
 <br>
 
 ----
@@ -166,3 +175,4 @@
 - [#038 공통모듈 구조 만들기, 예외 처리 분리하기](https://ddururiiiiiii.tistory.com/674)
 - [#039 리팩토링 - (1) 공통 응답 구조, 공통 예외 처리](https://ddururiiiiiii.tistory.com/675)
 - [#043 리팩토링 (5) - CustomUserDetails, FeignClient 그리고 record](https://ddururiiiiiii.tistory.com/681)
+- [#044 알림 서비스 만들기 (Kafka 활용)](https://ddururiiiiiii.tistory.com/682)
