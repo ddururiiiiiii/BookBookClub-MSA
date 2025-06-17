@@ -142,6 +142,7 @@
 - [#030 좋아요(Like) 랭킹에서 피드 상세정보 함께 내려주기](https://ddururiiiiiii.tistory.com/654)
 - [#031 피드 검색 조회](https://ddururiiiiiii.tistory.com/656)
 - [#032 각종 피드 조회 (특정 회원의 피드 목록 조회, 특정 회원이 좋아요 누른 피드 목록 조회)](https://ddururiiiiiii.tistory.com/657)
+- [#042 리팩토링 - (4) Feed 도메인 (단위 테스트, Postman 테스트 포함)](https://ddururiiiiiii.tistory.com/680)
 
 ### 좋아요(Like)
 - [#020 좋아요(Like) 도메인 개발 및 단위테스트](https://ddururiiiiiii.tistory.com/642)
@@ -155,6 +156,7 @@
 
 ### 팔로우(Follow)
 - [#034 팔로우(Follow) 도메인 구현 및 테스트](https://ddururiiiiiii.tistory.com/659)
+- [#041 리팩토링 - (3) Follow 도메인 (단위 테스트, Postman 테스트 포함)](https://ddururiiiiiii.tistory.com/679)
 
 ### MAS 전환기
 - [#035 모놀리식 아키텍처를 MSA 아키텍처로 전환하기 (1) - bbc-user-service (User, EmailValidation 엔티티)
@@ -163,3 +165,4 @@
 - [#037 모놀리식 아키텍처를 MSA 아키텍처로 전환하기 (3) - MSA 환경에서의 서비스 간 통신 구축](https://ddururiiiiiii.tistory.com/673)
 - [#038 공통모듈 구조 만들기, 예외 처리 분리하기](https://ddururiiiiiii.tistory.com/674)
 - [#039 리팩토링 - (1) 공통 응답 구조, 공통 예외 처리](https://ddururiiiiiii.tistory.com/675)
+- [#043 리팩토링 (5) - CustomUserDetails, FeignClient 그리고 record](https://ddururiiiiiii.tistory.com/681)

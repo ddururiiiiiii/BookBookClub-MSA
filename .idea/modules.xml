@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/bbc-common/BookBookClub-MSA.bbc-common.main.iml" filepath="$PROJECT_DIR$/.idea/modules/bbc-common/BookBookClub-MSA.bbc-common.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bbc-notification-service/BookBookClub-MSA.bbc-notification-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/bbc-notification-service/BookBookClub-MSA.bbc-notification-service.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/bbc-post-service/BookBookClub-MSA.bbc-post-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/bbc-post-service/BookBookClub-MSA.bbc-post-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bbc-user-service/BookBookClub-MSA.bbc-user-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/bbc-user-service/BookBookClub-MSA.bbc-user-service.main.iml" />
     </modules>
   </component>
 </project>

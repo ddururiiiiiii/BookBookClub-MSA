@@ -16,10 +16,6 @@ import java.util.Collections;
 public class CustomUserDetails implements UserDetails {
 
     private final Long userId;
-    private final String email;
-    private final String nickname;
-    private final String profileImageUrl;
-    private final String role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -33,7 +29,7 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email; // 사용자 고유 식별자로 email 사용
+        return userId != null ? userId.toString() : "anonymous";
     }
 
     @Override
@@ -56,11 +52,8 @@ public class CustomUserDetails implements UserDetails {
         return true;
     }
 
-    public CustomUserDetails(Long id, String email, String nickname, String profileImageUrl, String role) {
-        this.userId = id;
-        this.email = email;
-        this.nickname = nickname;
-        this.profileImageUrl = profileImageUrl;
-        this.role = role;
+    public CustomUserDetails(Long userId) {
+        this.userId = userId;
     }
+
 }
