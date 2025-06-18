@@ -1,0 +1,94 @@
+version: '3'
+services:
+  # 🐘 MySQL: 모든 서비스에서 사용하는 RDB
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bookbookclub
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  # 🧠 Redis: 이메일 인증, 토큰 저장 등 캐시용
+  redis:
+    image: redis:7.2
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  # 🦍 Zookeeper: Kafka 브로커 관리를 위한 필수 서비스
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.0
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  # 📣 Kafka: 비동기 메시지 통신 (알림, 이벤트 처리)
+  kafka:
+    image: confluentinc/cp-kafka:7.4.0
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    depends_on:
+      - zookeeper
+
+  # 👤 사용자 서비스
+  user-service:
+    build: ./bbc-user-service
+    container_name: user-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mysql
+      - redis
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+  # 📝 게시글 서비스
+  post-service:
+    build: ./bbc-post-service
+    container_name: post-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mysql
+      - kafka
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+  # 📢 알림 서비스
+  notification-service:
+    build: ./bbc-notification-service
+    container_name: notification-service
+    ports:
+      - "8083:8083"
+    depends_on:
+      - kafka
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+  # 🚪 API Gateway: 요청 라우팅 + 인증 처리
+  gateway:
+    build: ./bbc-gateway
+    container_name: gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - user-service
+      - post-service
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+volumes:
+  mysql-data:
