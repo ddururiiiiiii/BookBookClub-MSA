@@ -39,10 +39,12 @@
 
 ```bash
 📁 BookBookClub-MSA
-├── bbc-user-service # 회원 서비스 (로그인, 프로필, 소셜 로그인 등)
-├── bbc-post-service # 게시글 서비스 (피드 CRUD, 좋아요 등)
-├── bbc-common # 공통 DTO, Response, 예외 처리 등
-└── (추후 추가 예정) # gateway-service, batch-service, notification-service 등
+├── bbc-user-service         # 회원 서비스 (로그인, 프로필, 소셜 로그인 등)
+├── bbc-post-service         # 게시글 서비스 (피드 CRUD, 좋아요 등)
+├── bbc-notification-service # 알림 서비스 (Kafka 기반 비동기 알림 처리)
+├── bbc-gateway              # API Gateway (JWT 인증 필터, 라우팅)
+├── bbc-common               # 공통 DTO, Response, 예외 처리 등
+└── (추후 추가 예정)            # batch-service 등
 ```
 
 <br>
@@ -83,17 +85,24 @@
 - [x] 읽지 않은 알림 개수 조회
 - [x] Notification 도메인 분리 설계 (isRead, deletedAt 기반 논리 삭제 구조)
 - [x] JWT 기반 사용자 인증 (각 서비스별 JwtUtil 분리 사용)
+- 
 
-<br>
+### Gateway (bbc-gateway)
+- [x] Spring Cloud Gateway 모듈 도입 및 라우팅 설정
+- [x] JWT 인증 필터(GlobalFilter) 구현
+- [x] 유효한 토큰에서 userId 추출 후 X-USER-ID 헤더로 전달
+- [x] 내부 서비스(post-service 등)에서 인증 관련 필터 제거
+- [x] Gateway를 중심으로 인증 흐름 단일화
+
+- <br>
 
 ----
 
 ## 🪜 향후 계획
 
 - [ ] 관리자 페이지 (Spring Security + Admin Dashboard)
-- [ ] Kafka 기반 피드 이벤트 처리 및 통계 수집
+- [ ] 통계 수집 및 Kafka consumer 기반 데이터 집계 구조 구현
 - [ ] Redis 기반 세션 및 랭킹 초기화 스케줄링
-- [ ] API Gateway 도입 + Spring Cloud Gateway
 - [ ] CI/CD 자동화 (GitHub Actions → AWS)
 - [ ] Android 앱 (Kotlin + Jetpack Compose)
 
