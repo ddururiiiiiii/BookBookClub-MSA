@@ -1,16 +1,38 @@
-version: '3'
+
 services:
   # 🐘 MySQL: 모든 서비스에서 사용하는 RDB
-  mysql:
+  mysql-user:
     image: mysql:8.0
-    container_name: mysql
+    container_name: mysql-user
     ports:
-      - "3307:3306"
+      - "3310:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: bookbookclub
+      MYSQL_DATABASE: bbc_user_service
     volumes:
-      - mysql-data:/var/lib/mysql
+      - mysql-user-data:/var/lib/mysql
+
+  mysql-post:
+    image: mysql:8.0
+    container_name: mysql-post
+    ports:
+      - "3311:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bbc_post_service
+    volumes:
+      - mysql-post-data:/var/lib/mysql
+
+  mysql-notification:
+    image: mysql:8.0
+    container_name: mysql-notification
+    ports:
+      - "3312:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bbc_notification_service
+    volumes:
+      - mysql-notification-data:/var/lib/mysql
 
   # 🧠 Redis: 이메일 인증, 토큰 저장 등 캐시용
   redis:
@@ -50,7 +72,7 @@ services:
     ports:
       - "8081:8081"
     depends_on:
-      - mysql
+      - mysql-user
       - redis
     environment:
       SPRING_PROFILES_ACTIVE: docker
@@ -62,7 +84,7 @@ services:
     ports:
       - "8082:8082"
     depends_on:
-      - mysql
+      - mysql-post
       - kafka
     environment:
       SPRING_PROFILES_ACTIVE: docker
@@ -74,6 +96,7 @@ services:
     ports:
       - "8083:8083"
     depends_on:
+      - mysql-notification
       - kafka
     environment:
       SPRING_PROFILES_ACTIVE: docker
@@ -91,4 +114,6 @@ services:
       SPRING_PROFILES_ACTIVE: docker
 
 volumes:
-  mysql-data:
+  mysql-user-data:
+  mysql-post-data:
+  mysql-notification-data:

@@ -58,10 +58,12 @@
 - [x] 멀티모듈 기반 MSA 프로젝트 구조 정리
 - [x] 공통 ErrorCode, Response 통일
 - [x] Feign Client 연동 (User → Post 간 인증 정보 전달)
+- [x] bootJar → docker build → docker-compose up 자동화 스크립트 작성 
+- [x] 서비스 변경 시 재빌드 자동화 처리
 
 ### 유저 서비스 (`bbc-user-service`)
 - [x] JWT 기반 인증/인가 (Access/Refresh Token 구조)
-- [x] 소셜 로그인 (Google, Naver)
+- [x] 소셜 로그인 (Google)
 - [x] 이메일 인증 + Redis 저장 + DB 기록
 - [x] 사용자 정보 조회 (마이페이지)
 - [x] 프로필 이미지 업로드 (로컬 저장, S3 예정)
@@ -72,8 +74,7 @@
 ### 게시글 서비스 (`bbc-post-service`)
 - [x] 피드 CRUD
 - [x] 좋아요 토글, 좋아요 수 조회
-- [x] 인기 피드 Redis 기반 랭킹 캐시
-- [x] QueryDSL 기반 검색 기능
+- [x] QueryDSL 기반 검색 기능 기반 랭킹 캐시
 - [x] 블라인드 처리된 피드 제외 로직
 - [x] MSA 환경에서 사용자 정보 연동 (Feign 사용)
 
@@ -91,7 +92,7 @@
 - [x] Spring Cloud Gateway 모듈 도입 및 라우팅 설정
 - [x] JWT 인증 필터(GlobalFilter) 구현
 - [x] 유효한 토큰에서 userId 추출 후 X-USER-ID 헤더로 전달
-- [x] 내부 서비스(post-service 등)에서 인증 관련 필터 제거
+- [x] 내부 서비스에서 JWT 인증 필터 제거 및 인증 책임 분리
 - [x] Gateway를 중심으로 인증 흐름 단일화
 
 - <br>
@@ -99,11 +100,8 @@
 ----
 
 ## 🪜 향후 계획
-
-- [ ] 관리자 페이지 (Spring Security + Admin Dashboard)
-- [ ] 통계 수집 및 Kafka consumer 기반 데이터 집계 구조 구현
-- [ ] Redis 기반 세션 및 랭킹 초기화 스케줄링
-- [ ] CI/CD 자동화 (GitHub Actions → AWS)
+- [ ] Kafka 기반 통계 수집 구조 마무리 (현재 알림 이벤트 처리만 구현됨)
+- [ ] CI/CD 자동화 (GitHub Actions → AWS 배포)
 - [ ] Android 앱 (Kotlin + Jetpack Compose)
 
 <br>
@@ -144,6 +142,7 @@
 - [#014 글로벌 예외처리 및 API 응답 포맷 통일](https://ddururiiiiiii.tistory.com/621)
 - [#015 이메일 인증 실패 시도 횟수 제한 기능](https://ddururiiiiiii.tistory.com/623)
 - [#040 리팩토링 - (2) User 도메인 (단위 테스트, Postman 테스트 포함)](https://ddururiiiiiii.tistory.com/676)
+- [#045 Spring Cloud Gateway를 이용한 인증 구조 통합하기](https://ddururiiiiiii.tistory.com/683)
 
 ### 책(Book)
 - [#016 북(Book) 도메인 개발 및 단위 테스트](https://ddururiiiiiii.tistory.com/637)
@@ -160,7 +159,7 @@
 - [#030 좋아요(Like) 랭킹에서 피드 상세정보 함께 내려주기](https://ddururiiiiiii.tistory.com/654)
 - [#031 피드 검색 조회](https://ddururiiiiiii.tistory.com/656)
 - [#032 각종 피드 조회 (특정 회원의 피드 목록 조회, 특정 회원이 좋아요 누른 피드 목록 조회)](https://ddururiiiiiii.tistory.com/657)
-- [#042 리팩토링 - (4) Feed 도메인 (단위 테스트, Postman 테스트 포함)](https://ddururiiiiiii.tistory.com/680)
+- [#042 리팩토링 (4) Feed 도메인 (단위 테스트, Postman 테스트 포함)](https://ddururiiiiiii.tistory.com/680)
 
 ### 좋아요(Like)
 - [#020 좋아요(Like) 도메인 개발 및 단위테스트](https://ddururiiiiiii.tistory.com/642)
@@ -174,7 +173,7 @@
 
 ### 팔로우(Follow)
 - [#034 팔로우(Follow) 도메인 구현 및 테스트](https://ddururiiiiiii.tistory.com/659)
-- [#041 리팩토링 - (3) Follow 도메인 (단위 테스트, Postman 테스트 포함)](https://ddururiiiiiii.tistory.com/679)
+- [#041 리팩토링 (3) Follow 도메인 (단위 테스트, Postman 테스트 포함)](https://ddururiiiiiii.tistory.com/679)
 
 ### MAS 전환기
 - [#035 모놀리식 아키텍처를 MSA 아키텍처로 전환하기 (1) - bbc-user-service (User, EmailValidation 엔티티)
@@ -182,6 +181,6 @@
 - [#036 모놀리식 아키텍처를 MSA 아키텍처로 전환하기 (2) - bbc-user-service ((Follow 엔티티)](https://ddururiiiiiii.tistory.com/665)
 - [#037 모놀리식 아키텍처를 MSA 아키텍처로 전환하기 (3) - MSA 환경에서의 서비스 간 통신 구축](https://ddururiiiiiii.tistory.com/673)
 - [#038 공통모듈 구조 만들기, 예외 처리 분리하기](https://ddururiiiiiii.tistory.com/674)
-- [#039 리팩토링 - (1) 공통 응답 구조, 공통 예외 처리](https://ddururiiiiiii.tistory.com/675)
-- [#043 리팩토링 (5) - CustomUserDetails, FeignClient 그리고 record](https://ddururiiiiiii.tistory.com/681)
+- [#039 리팩토링 (1) 공통 응답 구조, 공통 예외 처리](https://ddururiiiiiii.tistory.com/675)
+- [#043 리팩토링 (5) CustomUserDetails, FeignClient 그리고 record](https://ddururiiiiiii.tistory.com/681)
 - [#044 알림 서비스 만들기 (Kafka 활용)](https://ddururiiiiiii.tistory.com/682)
